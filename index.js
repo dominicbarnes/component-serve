@@ -14,12 +14,12 @@ module.exports = function(opts) {
 
   router.get('/build.js', rebuild, function(req, res) {
     res.type('js');
-    res.send(res.locals.js);
+    res.send(res.js);
   });
 
   router.get('/build.css', rebuild, function(req, res) {
     res.type('css');
-    res.send(res.locals.css);
+    res.send(res.css);
   });
 
   return router;

@@ -16,8 +16,8 @@ module.exports = function(opts) {
     builder.build(function(err, obj) {
       if (err) return next(err);
 
-      res.locals.js = obj.require + obj.js;
-      res.locals.css = obj.css;
+      res.js = obj.require + obj.js;
+      res.css = obj.css;
 
       fs.writeFile(builder.path(path.join(opts.out, "build.js")), res.js);
       fs.writeFile(builder.path(path.join(opts.out, "build.css")), res.css);
