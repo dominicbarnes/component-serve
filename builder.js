@@ -1,3 +1,5 @@
+var fs = require("fs");
+var path = require("path");
 var Builder = require('component-builder');
 
 module.exports = function(opts) {
@@ -16,7 +18,10 @@ module.exports = function(opts) {
 
       res.locals.js = obj.require + obj.js;
       res.locals.css = obj.css;
-      
+
+      fs.writeFile(builder.path(path.join(opts.out, "build.js")), res.js);
+      fs.writeFile(builder.path(path.join(opts.out, "build.css")), res.css);
+
       next();
     });
   }
